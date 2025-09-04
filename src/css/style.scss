@@ -1,0 +1,101 @@
+// ==============================
+// 1️⃣ Bulma & Font Awesome
+// ==============================
+
+// Bulma CSS
+@import "../node_modules/bulma/css/bulma.css";
+
+// Font Awesome CSS
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+// ==============================
+// 2️⃣ Custom Colors & Fonts
+// ==============================
+$primary-pink: #ff9ec0;
+$secondary-purple: #d9b3ff;
+$bg-light: #fff0f5;
+$font-main: 'Comic Sans MS', cursive, sans-serif;
+
+body {
+  background-color: $bg-light;
+  font-family: $font-main;
+  margin: 0;
+  padding: 0;
+}
+
+// ==============================
+// 3️⃣ Buttons
+// ==============================
+.button.is-pink {
+  background-color: $primary-pink;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: bold;
+  &:hover {
+    background-color: darken($primary-pink, 10%);
+  }
+}
+
+// ==============================
+// 4️⃣ Song Cards / Result List
+// ==============================
+.song-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  img {
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
+}
+
+.song-title {
+  font-weight: bold;
+  color: $primary-pink;
+  font-size: 0.95rem;
+}
+
+.song-artist {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+// ==============================
+// 5️⃣ Player Container
+// ==============================
+#player {
+  width: 100%;
+  max-width: 360px;
+  height: 200px;
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+// ==============================
+// 6️⃣ Utility Classes (optional)
+// ==============================
+.text-center {
+  text-align: center;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}

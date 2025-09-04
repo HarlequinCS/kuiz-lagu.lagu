@@ -1,181 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎀 Hello Kitty Music Game</title>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Kitty YouTube Player</title>
+
+  <!-- Bulma + FontAwesome compiled CSS -->
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-  <!-- Animated Background Decorations -->
-  <div class="bg-gradient"></div>
-  <div class="sparkles" aria-hidden="true"></div>
-  <div class="floaters">
-    <div class="bow floater f1" aria-hidden="true"></div>
-    <div class="heart floater f2" aria-hidden="true"></div>
-    <div class="star floater f3" aria-hidden="true"></div>
-    <div class="heart floater f4" aria-hidden="true"></div>
-  </div>
+  <section class="section">
+    <div class="container">
+      <h1 class="title has-text-pink">🎀 Hello Kitty Music Player 🎀</h1>
 
-  <div id="app" class="shell">
-    <!-- Top Nav -->
-    <header class="nav">
-      <div class="brand">
-        <span class="logo" aria-hidden="true">
-          <!-- Tiny inline bow -->
-          <svg viewBox="0 0 64 32" width="34" height="17" role="img" aria-label="Hello bow">
-            <path d="M8 16c0-5 6-10 12-10 3 0 6 1 12 6 6-5 9-6 12-6 6 0 12 5 12 10s-6 10-12 10c-3 0-6-1-12-6-6 5-9 6-12 6-6 0-12-5-12-10Z" fill="#ff4d8d" />
-            <circle cx="32" cy="16" r="6" fill="#ff9cc2" stroke="#ff4d8d" stroke-width="2"/>
-          </svg>
-        </span>
-        <strong>Kitty Music Game</strong>
-      </div>
-
-      <div class="nav-actions">
-        <button class="chip chip--ghost" id="themeToggle" aria-pressed="false">🌙 Dark</button>
-        <a class="chip" href="#" id="howToBtn">❔ How to Play</a>
-      </div>
-    </header>
-
-    <!-- Landing -->
-    <section id="landing" class="card card--landing">
-      <div class="hero">
-        <h1>🎀 Welcome to the <span>Hello Kitty</span> Music Game</h1>
-        <p class="lead">Play your fave tunes, fill the missing lyrics, and keep the music <b>smooth</b> 💖</p>
-        <div class="cta">
-          <button id="startBtn" class="btn btn--primary btn--xl">
-            <span>Start Game</span>
-            <span class="btn-glow" aria-hidden="true"></span>
-          </button>
-          <button id="customizeBtn" class="btn btn--soft">🎨 Customize Theme</button>
+      <!-- Search -->
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input id="searchInput" class="input" type="text" placeholder="Search song or paste URL…">
+        </div>
+        <div class="control">
+          <button id="searchBtn" class="button is-pink">Search</button>
         </div>
       </div>
-      <ul class="features">
-        <li>✨ Cute pastel UI</li>
-        <li>🎶 Lyrics quiz ready</li>
-        <li>🏆 Smoothness score</li>
-      </ul>
-    </section>
 
-    <!-- Game Screen -->
-    <section id="game" class="grid hidden">
-      <!-- Left: Song & Controls -->
-      <aside class="card panel panel--left">
-        <div class="panel-header">
-          <h2>🎧 Song</h2>
-          <span class="badge">Idle</span>
-        </div>
+      <!-- Results -->
+      <div id="results" class="columns is-multiline mt-4"></div>
 
-        <div class="song-meta">
-          <div class="thumb placeholder">
-            <span>♪</span>
-          </div>
-          <div class="meta">
-            <h3 id="songTitle">No Song Selected</h3>
-            <p id="songArtist" class="muted">—</p>
-          </div>
-        </div>
+      <!-- Player -->
+      <div id="player" class="mt-4"></div>
+    </div>
+  </section>
 
-        <div class="controls">
-          <button class="icon-btn" aria-label="Play/Pause" id="playBtn">▶</button>
-          <button class="icon-btn" aria-label="Stop" id="stopBtn">■</button>
-          <button class="icon-btn" aria-label="Skip" id="skipBtn">⏭</button>
-        </div>
-
-        <div class="progress">
-          <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <div class="progress-info">
-            <span id="currentTime">0:00</span>
-            <span id="duration">0:00</span>
-          </div>
-        </div>
-
-        <div class="search">
-          <label class="field">
-            <input id="searchInput" type="text" placeholder="Search song or paste URL…"/>
-            <button id="searchBtn" class="btn btn--primary btn--sm">Search</button>
-          </label>
-          <div id="results" class="result-list"></div>
-          <div id="player" style="width:100%; height:180px; margin-top:12px;"></div>
-        </div>
-      </aside>
-
-      <!-- Right: Lyrics & Options -->
-      <main class="card panel panel--right">
-        <div class="panel-header">
-          <h2>📜 Lyrics</h2>
-          <div class="scoreboard">
-            <span class="score-label">💖 Score</span>
-            <span id="score" class="score">0</span>
-            <span class="score-label">✨ Smooth</span>
-            <span id="smooth" class="score">100%</span>
-          </div>
-        </div>
-
-        <div class="lyrics-box" id="lyricsBox">
-          <p id="lyricsLine" class="lyric">Lyrics will appear here…</p>
-        </div>
-
-        <div class="options">
-          <button class="option option--a">Option 1</button>
-          <button class="option option--b">Option 2</button>
-          <button class="option option--c">Option 3</button>
-          <button class="option option--d">Option 4</button>
-        </div>
-
-        <div class="footer-bar">
-          <div class="status">
-            <span class="dot dot--ready"></span>
-            <span id="statusText">Ready</span>
-          </div>
-          <div class="combo">
-            <span>Combo</span>
-            <div class="combo-track"><div id="comboFill"></div></div>
-          </div>
-        </div>
-      </main>
-    </section>
-
-    <!-- Audio element (we can control this later) -->
-    <audio id="audio" preload="metadata"></audio>
-
-    <!-- Modals -->
-    <dialog id="howToModal" class="modal">
-      <form method="dialog" class="modal-card">
-        <h3>How to Play</h3>
-        <ol>
-          <li>Search & select a song ✨</li>
-          <li>Music plays — watch the lyrics 🎶</li>
-          <li>Pick the correct word when it blanks out 💡</li>
-          <li>Answer fast to keep it <b>smooth</b> 💖</li>
-        </ol>
-        <div class="modal-actions">
-          <button class="btn btn--primary">Got it!</button>
-        </div>
-      </form>
-    </dialog>
-
-    <dialog id="themeModal" class="modal">
-      <form method="dialog" class="modal-card">
-        <h3>Customize Theme</h3>
-        <div class="swatches">
-          <button class="swatch" data-theme="kitty">Kitty</button>
-          <button class="swatch" data-theme="berry">Berry</button>
-          <button class="swatch" data-theme="mint">Mint</button>
-          <button class="swatch" data-theme="lavender">Lavender</button>
-        </div>
-        <div class="modal-actions">
-          <button class="btn btn--soft">Close</button>
-        </div>
-      </form>
-    </dialog>
-  </div>
-
-
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="js/script.js"></script>
+  <script src="./js/main.js" type="module"></script>
 </body>
 </html>
