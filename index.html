@@ -3,34 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello Kitty YouTube Player</title>
-
-  <!-- Bulma + FontAwesome compiled CSS -->
-  <link rel="stylesheet" href="src/css/style.css">
+  <title>CuteTube - Hello Kitty Theme</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title has-text-pink">🎀 Hello Kitty Music Player 🎀</h1>
-
-      <!-- Search -->
-      <div class="field has-addons">
-        <div class="control is-expanded">
-          <input id="searchInput" class="input" type="text" placeholder="Search song or paste URL…">
-        </div>
-        <div class="control">
-          <button id="searchBtn" class="button is-pink">Search</button>
-        </div>
-      </div>
-
-      <!-- Results -->
-      <div id="results" class="columns is-multiline mt-4"></div>
-
-      <!-- Player -->
-      <div id="player" class="mt-4"></div>
+  <!-- Header / Navbar -->
+  <header>
+    <h1>CuteTube</h1>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search videos...">
+      <button id="search-btn">Search</button>
     </div>
-  </section>
+  </header>
 
-  <script src="src/js/main.js" type="module"></script>
+  <!-- Main content -->
+  <main>
+    <div class="video-grid"></div>
+    <div class="loader">Loading...</div>
+  </main>
+
+  <!-- Player & Playlist container -->
+  <!-- JS will dynamically create this -->
+
+  <script src="/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,268 @@
+/* ==============================
+   CuteTube Ultimate CSS
+   Hello Kitty Theme
+   ============================== */
+
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+body {
+  background: #ffe6f0; /* soft pink background */
+  color: #333;
+  line-height: 1.4;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar cute */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ffd6e8;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff80bf;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4da6;
+}
+
+/* Header / Navbar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #ffb3d9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-shadow: 2px 2px #ff66b3;
+}
+
+header .search-bar {
+  flex: 1;
+  max-width: 600px;
+  margin-left: 24px;
+  display: flex;
+}
+
+header .search-bar input {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 50px 0 0 50px;
+  outline: none;
+  font-size: 1rem;
+  background: #fff0f5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header .search-bar button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 0 50px 50px 0;
+  background: #ff80bf;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+header .search-bar button:hover {
+  background: #ff4da6;
+}
+
+/* Main container */
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Loader */
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff69b4;
+  margin: 24px 0;
+  display: none; /* hide by default */
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.video-card {
+  background: #fff0f5;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(255, 105, 180, 0.3);
+}
+
+.video-card img {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #ff99c2;
+}
+
+.video-card .info {
+  padding: 0.8rem 1rem;
+}
+
+.video-card .title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #d147a3;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+.video-card .channel {
+  font-size: 0.85rem;
+  color: #ff69b4;
+}
+
+/* Cute floating elements */
+.cute-floating {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  animation: floaty 6s infinite;
+  opacity: 0.6;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(-10deg); }
+}
+
+/* Embedded Player & Sidebar */
+.video-player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 45%;
+  background: #fff0f5;
+  border-top: 4px solid #ff69b4;
+  display: flex;
+  transition: transform 0.5s;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transform: translateY(100%);
+}
+
+.video-player-container.active {
+  transform: translateY(0%);
+}
+
+#video-player {
+  flex: 2;
+  padding: 15px;
+}
+
+#video-player iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: none;
+}
+
+#video-details {
+  margin-top: 10px;
+}
+
+#video-details h2 {
+  color: #ff1493;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#video-details p {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+}
+
+#video-details span {
+  font-weight: bold;
+  color: #ff69b4;
+}
+
+/* Playlist Sidebar */
+#playlist-sidebar {
+  flex: 1;
+  overflow-y: auto;
+  border-left: 2px solid #ffb6c1;
+  padding: 10px;
+}
+
+#playlist-sidebar .video-card {
+  margin-bottom: 10px;
+}
+
+/* Scrollbar Sidebar */
+#playlist-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+#playlist-sidebar::-webkit-scrollbar-thumb {
+  background: #ff69b4;
+  border-radius: 4px;
+}
+
+#playlist-sidebar::-webkit-scrollbar-track {
+  background: #ffe4e1;
+  border-radius: 4px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  #video-player iframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  #video-player iframe {
+    height: 220px;
+  }
+
+  .video-card .title {
+    font-size: 0.95rem;
+  }
+}
